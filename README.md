@@ -87,9 +87,9 @@ Password: password
 
 To run the development server for the backend application, use:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 This will start the application in development mode, allowing you to make changes and see updates in real-time.
 
