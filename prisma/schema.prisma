@@ -18,6 +18,8 @@ model User {
   password  String
   code      String
   createdAt DateTime @default(now())
+
+  @@unique([code])
 }
 
 model Facility {
