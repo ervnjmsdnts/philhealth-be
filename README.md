@@ -16,7 +16,7 @@ git clone https://github.com/ervnjmsdnts/philhealth-be.git
 cd philhealth-be
 ```
 
-### 2. Install Dependencies (Optional)
+### 2. Install Dependencies
 
 If you want to run the application locally without Docker, install the dependencies:
 
