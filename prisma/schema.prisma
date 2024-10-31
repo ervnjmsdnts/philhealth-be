@@ -30,10 +30,10 @@ model Facility {
   address       String
   contactNumber String
   email         String
-  sendDate      Int?
-  receivedDate  Int?
+  sendDate      BigInt?
+  receivedDate  BigInt?
   status        Status   @default(NOT_RECEIVED)
-  dateClaimed   Int?
+  dateClaimed   BigInt?
   createdAt     DateTime @default(now())
 }
 
@@ -45,9 +45,9 @@ model HealthCare {
   address        String
   contactNumber  String
   email          String
-  sendDate       Int?
-  receivedDate   Int?
+  sendDate       BigInt?
+  receivedDate   BigInt?
   status         Status   @default(NOT_RECEIVED)
-  dateClaimed    Int?
+  dateClaimed    BigInt?
   createdAt      DateTime @default(now())
 }
