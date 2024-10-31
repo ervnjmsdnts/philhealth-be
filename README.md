@@ -18,7 +18,7 @@ cd philhealth-be
 
 ### 2. Install Dependencies
 
-If you want to run the application locally without Docker, install the dependencies:
+To run the application locally, install the dependencies:
 
 ```bash
 npm install
@@ -83,7 +83,17 @@ User: root
 Password: password
 ```
 
-### 7. Stopping the Database Service
+### 7. Start the Development Server
+
+To run the development server for the backend application, use:
+
+\`\`\`bash
+npm run dev
+\`\`\`
+
+This will start the application in development mode, allowing you to make changes and see updates in real-time.
+
+### 8. Stopping the Database Service
 
 To stop and remove the database container, network, and volume:
 
