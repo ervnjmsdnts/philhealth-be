@@ -27,7 +27,9 @@ export const loginController = async (req: Request, res: Response) => {
       'secret',
     );
 
-    res.status(200).send({ token });
+    const profile = { id: user.id, name: user.name, code: user.code };
+
+    res.status(200).send({ token, profile });
     return;
   } catch (error) {
     res
