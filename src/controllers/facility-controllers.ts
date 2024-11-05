@@ -6,7 +6,14 @@ export const getFacilities = async (_req: Request, res: Response) => {
   try {
     const facilities = await prisma.facility.findMany();
 
-    res.status(200).send(facilities);
+    res.status(200).send(
+      facilities.map((item) => ({
+        ...item,
+        sendDate: Number(item?.sendDate?.toString()) ?? null,
+        receivedDate: Number(item?.receivedDate?.toString()) ?? null,
+        dateClaimed: Number(item?.dateClaimed?.toString()) ?? null,
+      })),
+    );
     return;
   } catch (error) {
     res

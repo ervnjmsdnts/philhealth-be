@@ -9,7 +9,14 @@ export const getHealthCareProfessional = async (
   try {
     const healthCareProfessional = await prisma.healthCare.findMany();
 
-    res.status(200).send(healthCareProfessional);
+    res.status(200).send(
+      healthCareProfessional.map((item) => ({
+        ...item,
+        sendDate: Number(item?.sendDate?.toString()) ?? null,
+        receivedDate: Number(item?.receivedDate?.toString()) ?? null,
+        dateClaimed: Number(item?.dateClaimed?.toString()) ?? null,
+      })),
+    );
     return;
   } catch (error) {
     res.status(500).send({
@@ -66,13 +73,11 @@ export const deleteHealthCareProfessional = async (
     res.status(200).send({ message: 'Health care professional deleted' });
     return;
   } catch (error) {
-    res
-      .status(500)
-      .send({
-        message: `deleteHealthCareProfessional ERROR: ${
-          (error as Error).message
-        }`,
-      });
+    res.status(500).send({
+      message: `deleteHealthCareProfessional ERROR: ${
+        (error as Error).message
+      }`,
+    });
     return;
   }
 };
