@@ -83,7 +83,15 @@ User: root
 Password: password
 ```
 
-### 7. Start the Development Server
+### 6. Before running the Development Server
+
+To create the tables needed for the application, use:
+
+```bash
+npx prisma db push
+```
+
+### 8. Start the Development Server
 
 To run the development server for the backend application, use:
 
@@ -93,7 +101,7 @@ npm run dev
 
 This will start the application in development mode, allowing you to make changes and see updates in real-time.
 
-### 8. Stopping the Database Service
+### 9. Stopping the Database Service
 
 To stop and remove the database container, network, and volume:
 
