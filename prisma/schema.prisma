@@ -1,0 +1,75 @@
+// Generator configuration for Prisma Client
+// Specifies that Prisma Client will be used to interact with the database in JavaScript/TypeScript
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Database configuration
+// Defines the data source and sets MySQL as the database provider
+// The connection URL for the database is fetched from an environment variable
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Enum definition for tracking status
+// This enum is used to define possible values for the status of certain models
+enum Status {
+  RECIEVED
+  NOT_RECEIVED
+}
+
+enum ACCREDITATION_STATUS {
+  PENDING
+  ACCEPTED
+}
+
+// User model definition
+// Represents a user in the system
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  password  String
+  code      String
+  createdAt DateTime @default(now())
+
+  @@unique([code]) // Enforces uniqueness of the 'code' field across all users
+}
+
+// Facility model definition
+// Represents a facility in the system
+model Facility {
+  id                  Int                  @id @default(autoincrement())
+  licenceNumber       String
+  name                String
+  level               String
+  address             String
+  contactNumber       String
+  email               String
+  sendDate            BigInt?
+  receivedDate        BigInt?
+  status              Status               @default(NOT_RECEIVED)
+  accreditationStatus ACCREDITATION_STATUS @default(PENDING)
+  receivedBy          String?
+  dateClaimed         BigInt?
+  createdAt           DateTime             @default(now())
+}
+
+// HealthCare model definition
+// Represents a healthcare professional in the system
+model HealthCare {
+  id                  Int                  @id @default(autoincrement())
+  licenceNumber       String
+  name                String
+  specialization      String
+  address             String
+  contactNumber       String
+  email               String
+  sendDate            BigInt?
+  receivedDate        BigInt?
+  status              Status               @default(NOT_RECEIVED)
+  accreditationStatus ACCREDITATION_STATUS @default(PENDING)
+  receivedBy          String?
+  dateClaimed         BigInt?
+  createdAt           DateTime             @default(now())
+}
