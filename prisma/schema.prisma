@@ -19,6 +19,11 @@ enum Status {
   NOT_RECEIVED
 }
 
+enum ACCREDITATION_STATUS {
+  PENDING
+  ACCEPTED
+}
+
 // User model definition
 // Represents a user in the system
 model User {
@@ -34,33 +39,37 @@ model User {
 // Facility model definition
 // Represents a facility in the system
 model Facility {
-  id            Int      @id @default(autoincrement())
-  licenceNumber String
-  name          String
-  level         String
-  address       String
-  contactNumber String
-  email         String
-  sendDate      BigInt?
-  receivedDate  BigInt?
-  status        Status   @default(NOT_RECEIVED)
-  dateClaimed   BigInt?
-  createdAt     DateTime @default(now())
+  id                  Int                  @id @default(autoincrement())
+  licenceNumber       String
+  name                String
+  level               String
+  address             String
+  contactNumber       String
+  email               String
+  sendDate            BigInt?
+  receivedDate        BigInt?
+  status              Status               @default(NOT_RECEIVED)
+  accreditationStatus ACCREDITATION_STATUS @default(PENDING)
+  receivedBy          String?
+  dateClaimed         BigInt?
+  createdAt           DateTime             @default(now())
 }
 
 // HealthCare model definition
 // Represents a healthcare professional in the system
 model HealthCare {
-  id             Int      @id @default(autoincrement())
-  licenceNumber  String
-  name           String
-  specialization String
-  address        String
-  contactNumber  String
-  email          String
-  sendDate       BigInt?
-  receivedDate   BigInt?
-  status         Status   @default(NOT_RECEIVED)
-  dateClaimed    BigInt?
-  createdAt      DateTime @default(now())
+  id                  Int                  @id @default(autoincrement())
+  licenceNumber       String
+  name                String
+  specialization      String
+  address             String
+  contactNumber       String
+  email               String
+  sendDate            BigInt?
+  receivedDate        BigInt?
+  status              Status               @default(NOT_RECEIVED)
+  accreditationStatus ACCREDITATION_STATUS @default(PENDING)
+  receivedBy          String?
+  dateClaimed         BigInt?
+  createdAt           DateTime             @default(now())
 }
